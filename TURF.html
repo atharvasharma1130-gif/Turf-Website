@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hapur Sports Arena – Football, Cricket, Badminton, Swimming</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--grass:#1f7a3e;--deep:#0a2418;--chalk:#f4f8f2;--aqua:#19b5c9;--shuttle:#f2c230;--ball:#e0432f;--mute:#a9c3b2;
+--hd:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;--bd:'Figtree',system-ui,sans-serif;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--deep);color:var(--chalk);font-family:var(--bd);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:var(--hd);font-weight:900;line-height:.9;margin:0;text-transform:uppercase;letter-spacing:.01em}
+a{color:inherit}
+#bar{position:fixed;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,var(--shuttle),var(--ball),var(--aqua));transform-origin:0 0;transform:scaleX(0);z-index:60}
+nav{position:fixed;top:4px;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:linear-gradient(var(--deep),transparent)}
+nav b{font-family:var(--hd);font-size:1.6rem;letter-spacing:.04em}
+nav .links{display:flex;gap:26px;font-size:.95rem}
+nav .links a{text-decoration:none;opacity:.85}
+nav .links a:hover{opacity:1;color:var(--shuttle)}
+.btn{display:inline-block;background:var(--shuttle);color:var(--deep);font-weight:600;padding:14px 28px;border-radius:999px;text-decoration:none;border:0;font:600 1rem var(--bd);cursor:pointer;transition:transform .2s}
+.btn:hover{transform:scale(1.06) rotate(-1deg)}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}
+/* hero */
+#hero{height:260vh;position:relative}
+.stick{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center;background:radial-gradient(120% 90% at var(--gx,50%) 110%,#1f7a3e 0,#0e3d22 45%,var(--deep) 80%)}
+.stick svg.field{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.stick svg path,.stick svg rect,.stick svg circle{fill:none;stroke:var(--chalk);stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1}
+.hero-t{position:relative;text-align:center;padding:0 4vw}
+.hero-t h1{font-size:clamp(3.6rem,15vw,13rem)}
+.hero-t .l2{color:var(--shuttle)}
+.hero-t p{max-width:520px;margin:24px auto 0;color:var(--mute);font-size:1.1rem}
+#ball{position:absolute;left:0;top:62%;font-size:clamp(3rem,8vw,6rem);will-change:transform;filter:drop-shadow(0 18px 12px #0008)}
+.hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:var(--mute);font-size:.85rem}
+/* marquee */
+.mq{overflow:hidden;background:var(--shuttle);color:var(--deep);padding:14px 0;transform:rotate(-1.5deg) scale(1.03);margin:-18px 0 40px;position:relative;z-index:2}
+.mq div{display:flex;gap:44px;white-space:nowrap;font-family:var(--hd);font-weight:900;font-size:2.4rem;text-transform:uppercase;will-change:transform;width:max-content}
+/* horizontal sports */
+#sports{height:calc(100vh + 7*90vh);position:relative}
+#sports .stick{display:block;background:var(--deep)}
+.track{display:flex;height:100%;will-change:transform}
+.panel{flex:0 0 100vw;height:100%;position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 7vw;overflow:hidden}
+.panel h2{font-size:clamp(4.5rem,17vw,15rem);position:relative;z-index:2}
+.panel p{max-width:430px;font-size:1.15rem;position:relative;z-index:2;margin:18px 0 0}
+.panel small{position:relative;z-index:2;margin-top:14px;font-weight:600}
+.panel .ico{position:absolute;right:4vw;top:50%;font-size:clamp(11rem,38vw,32rem);line-height:1;transform:translateY(-50%);opacity:.95;will-change:transform}
+.p1{background:#14602f}.p2{background:#a23a22}.p3{background:#1c2f6b}.p4{background:#0b7585}.p5{background:#b05a12}.p6{background:#6b2a78}.p7{background:#8a2342}.p8{background:#256b5e}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:50px}
+.ph{margin:0;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#0e3d22}
+.ph svg{width:100%;height:100%;display:block;will-change:transform}
+.ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 14px;background:linear-gradient(transparent,#000a);font-weight:600}
+.dots{position:absolute;bottom:28px;left:7vw;display:flex;gap:8px;z-index:5}
+.dots i{width:34px;height:5px;border-radius:3px;background:#fff4;transition:.3s}.dots i.on{background:var(--shuttle);width:60px}
+/* sections */
+section.pad{padding:14vh 6vw}
+.wrap{max-width:1150px;margin:0 auto}
+.big{font-size:clamp(2.8rem,8vw,7rem)}
+.rv{opacity:0;transform:translateY(50px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:30px;margin-top:60px}
+.stats div{border-top:4px solid var(--grass);padding-top:14px}
+.stats b{font-family:var(--hd);font-size:5.5rem;font-weight:900;line-height:1;color:var(--shuttle)}
+.stats span{display:block;color:var(--mute)}
+.fac{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;margin-top:50px;background:#ffffff22}
+.fac div{background:var(--deep);padding:34px 26px;transition:background .3s,transform .3s}
+.fac div:hover{background:var(--grass);transform:translateY(-6px)}
+.fac h3{font-size:2.1rem;margin-bottom:8px}.fac p{margin:0;color:var(--mute)}.fac div:hover p{color:var(--chalk)}
+#price{background:var(--chalk);color:var(--deep)}
+#price .big em{font-style:normal;color:var(--grass)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:50px}
+.card{background:#fff;border:3px solid var(--deep);border-radius:22px;padding:30px;transition:transform .3s}
+.card:hover{transform:rotate(-1.5deg) translateY(-8px)}
+.card h3{font-size:2.3rem}.card b{font-family:var(--hd);font-size:3.4rem;display:block;margin:12px 0 4px;color:var(--grass)}
+.card p{margin:0;font-size:.95rem}
+.note{font-size:.85rem;margin-top:22px;opacity:.7}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px}
+label{display:grid;gap:6px;font-size:.9rem;color:var(--mute)}
+input,select{background:#ffffff14;border:2px solid #ffffff44;border-radius:12px;padding:14px;color:var(--chalk);font:1rem var(--bd)}
+select option{color:#000}
+form .btn{grid-column:1/-1;justify-self:start}
+footer{padding:60px 6vw 40px;text-align:center;color:var(--mute);border-top:1px solid #ffffff22}
+footer b{display:block;font-family:var(--hd);font-size:clamp(3rem,12vw,9rem);color:var(--chalk);line-height:.9;margin-bottom:18px}
+@media(max-width:700px){nav .links{display:none}.panel .ico{opacity:.35;right:-8vw}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav><b>Hapur Sports Arena</b><div class="links"><a href="#sports">Games</a><a href="#facilities">Facilities</a><a href="#price">Rates</a><a href="#book">Book</a></div></nav>
+
+<header id="hero">
+ <div class="stick" id="hs">
+  <svg class="field" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+   <rect x="60" y="50" width="880" height="500" rx="6" pathLength="1"/>
+   <path d="M500 50V550" pathLength="1"/><circle cx="500" cy="300" r="90" pathLength="1"/>
+   <rect x="60" y="180" width="140" height="240" pathLength="1"/><rect x="800" y="180" width="140" height="240" pathLength="1"/>
+  </svg>
+  <div class="hero-t">
+   <h1 id="l1">One turf.</h1><h1 id="l2" class="l2">Every game.</h1>
+   <p id="hp">Football, cricket, badminton, swimming and more — all under the floodlights at Hapur’s biggest sports ground.</p>
+   <p><a class="btn" href="#book">Book your slot</a></p>
+  </div>
+  <div id="ball" aria-hidden="true">⚽</div>
+  <div class="hint">Scroll to play ↓</div>
+ </div>
+</header>
+
+<div class="mq" aria-hidden="true"><div id="mq"><span>Football</span><span>Cricket</span><span>Badminton</span><span>Swimming</span><span>Basketball</span><span>Volleyball</span><span>Football</span><span>Cricket</span><span>Badminton</span><span>Swimming</span><span>Basketball</span><span>Volleyball</span></div></div>
+
+<main>
+<section id="sports" aria-label="Games we offer">
+ <div class="stick">
+  <div class="track" id="track">
+   <div class="panel p1"><div class="ico" data-s="1">⚽</div><h2>Football</h2><p>Full-size turf with pro-grade grass, split into 5-a-side or 7-a-side pitches for your team.</p><small>Pitches: 5s · 7s · 11s</small></div>
+   <div class="panel p2"><div class="ico" data-s="1">🏏</div><h2>Cricket</h2><p>Practice nets and a match-ready box cricket ground. Weekend leagues and night matches.</p><small>Nets · Box cricket · Tournaments</small></div>
+   <div class="panel p3"><div class="ico" data-s="1">🏸</div><h2>Badminton</h2><p>Wooden-floor indoor courts with bright anti-glare lighting. Singles, doubles, coaching.</p><small>Indoor courts · Rackets on rent</small></div>
+   <div class="panel p4"><div class="ico" data-s="1">🏊</div><h2>Swimming</h2><p>A clean, filtered pool for fitness laps, kids’ batches and summer fun.</p><small>Lap lanes · Kids’ batches</small></div>
+   <div class="panel p5"><div class="ico" data-s="1">🏀</div><h2>Basketball</h2><p>A full hoop court for shootouts, 3-on-3 and school practice.</p><small>Half court · Full court</small></div>
+   <div class="panel p6"><div class="ico" data-s="1">🏐</div><h2>Volleyball</h2><p>Sand and turf nets for friends, offices and weekend matches.</p><small>Tournament-ready nets</small></div>
+   <div class="panel p7"><div class="ico" data-s="1">🤼</div><h2>Kabaddi</h2><p>A proper mat for India’s home-grown contact sport. Team practice, league nights and fitness batches.</p><small>Mat court · Team bookings</small></div>
+   <div class="panel p8"><div class="ico" data-s="1">🏓</div><h2>Table Tennis</h2><p>Tournament tables in a bright indoor hall. Quick rallies after work or a full match with friends.</p><small>Indoor tables · Bats on rent</small></div>
+  </div>
+  <div class="dots" id="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+ </div>
+</section>
+
+<section class="pad"><div class="wrap">
+ <h2 class="big rv">Built for people who<br>can’t sit still.</h2>
+ <div class="stats">
+  <div><b data-n="8">0</b><span>Sports in one campus</span></div>
+  <div><b data-n="17">0</b><span>Hours open every day</span></div>
+  <div><b data-n="100">0</b><span>% floodlit for night games</span></div>
+  <div><b data-n="500">0</b><span>+ players every month</span></div>
+ </div>
+</div></section>
+
+<section class="pad" id="facilities"><div class="wrap">
+ <h2 class="big rv">Everything off the pitch,<br>sorted.</h2>
+ <div class="fac">
+  <div class="rv"><h3>Floodlights</h3><p>Even, glare-free light so evening matches feel like match day.</p></div>
+  <div class="rv"><h3>Changing rooms</h3><p>Clean lockers and washrooms for men and women.</p></div>
+  <div class="rv"><h3>Parking</h3><p>Safe space for cars and bikes right by the gate.</p></div>
+  <div class="rv"><h3>Café</h3><p>Cold drinks, snacks and chai after the final whistle.</p></div>
+  <div class="rv"><h3>Coaching</h3><p>Trained coaches for football, cricket, badminton and swimming.</p></div>
+  <div class="rv"><h3>Tournaments</h3><p>We host school, college and corporate leagues with referees and scoring.</p></div>
+  <div class="rv"><h3>Equipment rental</h3><p>Rent footballs, bats, rackets and bibs at the counter, so you only bring yourself.</p></div>
+  <div class="rv"><h3>First aid</h3><p>A stocked first-aid kit and trained staff on site for sprains and scrapes.</p></div>
+  <div class="rv"><h3>Spectator seating</h3><p>Shaded seating so family and friends can cheer from the sidelines.</p></div>
+  <div class="rv"><h3>CCTV and security</h3><p>Camera cover and a guard at the gate for safe late-night games.</p></div>
+ </div>
+</div></section>
+
+<section class="pad" id="price"><div class="wrap">
+ <h2 class="big rv">Pick a game.<br><em>Pay by the hour.</em></h2>
+ <div class="cards">
+  <div class="card"><h3>Football</h3><b>₹1,200</b><p>per hour · 7-a-side pitch</p></div>
+  <div class="card"><h3>Cricket</h3><b>₹900</b><p>per hour · box cricket or nets</p></div>
+  <div class="card"><h3>Badminton</h3><b>₹300</b><p>per hour · one indoor court</p></div>
+  <div class="card"><h3>Swimming</h3><b>₹150</b><p>per entry · monthly pass available</p></div>
+ </div>
+ <p class="note">Sample rates. Replace them with your real prices before launch.</p>
+</div></section>
+
+<section class="pad" id="book"><div class="wrap">
+ <h2 class="big rv">Lock your slot.</h2>
+ <p style="color:var(--mute);max-width:520px">Fill this in and we open WhatsApp with your request ready to send.</p>
+ <form id="f">
+  <label>Your name<input id="nm" required autocomplete="name"></label>
+  <label>Game<select id="gm"><option>Football</option><option>Cricket</option><option>Badminton</option><option>Swimming</option><option>Basketball</option><option>Volleyball</option></select></label>
+  <label>Date<input id="dt" type="date" required></label>
+  <label>Time<input id="tm" type="time" required></label>
+  <a class="btn" id="wa" href="#book" target="_blank" rel="noopener">Send on WhatsApp</a>
+ </form>
+</div></section>
+
+<section class="pad" id="photos"><div class="wrap">
+ <h2 class="big rv">Take a look<br>around.</h2>
+ <div class="gal">
+  <figure class="ph"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Football turf seen from above"><rect width="400" height="300" fill="#1f7a3e"/><g fill="#2a8f4c"><rect x="0" width="50" height="300"/><rect x="100" width="50" height="300"/><rect x="200" width="50" height="300"/><rect x="300" width="50" height="300"/></g><g fill="none" stroke="#fff" stroke-width="3"><rect x="20" y="20" width="360" height="260"/><path d="M200 20V280"/><circle cx="200" cy="150" r="42"/><rect x="20" y="90" width="60" height="120"/><rect x="320" y="90" width="60" height="120"/></g></svg><figcaption>Football pitch</figcaption></figure>
+  <figure class="ph"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Turf under floodlights at night"><rect width="400" height="300" fill="#0b1a3a"/><rect y="190" width="400" height="110" fill="#1b6b38"/><g fill="#f2c230" opacity=".22"><polygon points="60,50 -20,300 200,300"/><polygon points="340,50 200,300 430,300"/></g><g stroke="#9aa7bd" stroke-width="5"><path d="M60 50V200"/><path d="M340 50V200"/></g><g fill="#fff6c8"><rect x="44" y="38" width="32" height="14" rx="3"/><rect x="324" y="38" width="32" height="14" rx="3"/></g><circle cx="200" cy="235" r="9" fill="#fff"/></svg><figcaption>Floodlit evenings</figcaption></figure>
+  <figure class="ph"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Cricket ground with a pitch strip"><rect width="400" height="300" fill="#2a8f4c"/><circle cx="200" cy="150" r="130" fill="#23803f" stroke="#fff" stroke-width="3"/><rect x="185" y="70" width="30" height="160" fill="#d9bd86"/><g stroke="#fff" stroke-width="3"><path d="M190 90H210M190 210H210"/></g><g stroke="#6b4a1e" stroke-width="3"><path d="M195 78V92M200 78V92M205 78V92M195 208V222M200 208V222M205 208V222"/></g></svg><figcaption>Cricket ground</figcaption></figure>
+  <figure class="ph"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Swimming pool with lanes"><rect width="400" height="300" fill="#19b5c9"/><g fill="#0b7585"><rect y="48" width="400" height="5"/><rect y="98" width="400" height="5"/><rect y="148" width="400" height="5"/><rect y="198" width="400" height="5"/><rect y="248" width="400" height="5"/></g><g fill="none" stroke="#fff" stroke-width="3" opacity=".6"><path d="M20 30q20-12 40 0t40 0 40 0 40 0"/><path d="M180 130q20-12 40 0t40 0 40 0"/><path d="M40 230q20-12 40 0t40 0 40 0"/></g></svg><figcaption>Swimming pool</figcaption></figure>
+ </div>
+ <p class="note" style="color:var(--mute)">These are illustrations. Swap in photos of your own turf when you have them.</p>
+</div></section>
+</main>
+
+<footer><b>See you on the turf.</b>Hapur Sports Arena · Hapur, Uttar Pradesh, India<br>Open daily · 6 AM to 11 PM</footer>
+
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var bar=$('#bar'),hero=$('#hero'),ball=$('#ball'),l1=$('#l1'),l2=$('#l2'),hp=$('#hp'),hs=$('#hs');
+var sp=$('#sports'),track=$('#track'),dots=$$('#dots i'),icos=$$('.ico'),mq=$('#mq');
+var paths=$$('.field rect,.field path,.field circle');
+var last=0,mx=0;
+function prog(el){var r=el.getBoundingClientRect();return Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)))}
+function frame(){
+ var sy=scrollY,vy=sy-last;last=sy;
+ bar.style.transform='scaleX('+(sy/Math.max(1,document.documentElement.scrollHeight-innerHeight))+')';
+ if(!rm){
+  var p=prog(hero),w=innerWidth;
+  l1.style.transform='translateX('+(-p*30)+'vw) scale('+(1+p*.25)+')';
+  l2.style.transform='translateX('+(p*30)+'vw) scale('+(1+p*.25)+')';
+  hp.style.opacity=Math.max(0,1-p*3);
+  ball.style.transform='translate('+(p*(w+160)-120)+'px,'+(-Math.sin(p*Math.PI*3)*Math.min(180,w/5)-p*60)+'px) rotate('+(p*1440)+'deg)';
+  hs.style.setProperty('--gx',(30+p*40)+'%');
+  var d=Math.max(0,1-p*2.2);paths.forEach(function(e){e.style.strokeDashoffset=d});
+  var W=sp.clientWidth,n=track.children.length,max=(n-1)*W,hh=Math.round(innerHeight+max*.6);if(sp._h!==hh){sp._h=hh;sp.style.height=hh+'px';for(var c=0;c<n;c++){track.children[c].style.flex='0 0 '+W+'px'}}var q=prog(sp);
+  track.style.transform='translateX('+(-q*max)+'px)';
+  var idx=Math.min(7,Math.round(q*7));dots.forEach(function(d,i){d.className=i===idx?'on':''});
+  icos.forEach(function(e,i){var off=(q*7-i)*-14;e.style.transform='translateY(-50%) translateX('+off+'vw) rotate('+(q*7-i)*25+'deg)'});
+  mx-=1.2+vy*.35;var half=mq.scrollWidth/2;if(mx<-half)mx+=half;if(mx>0)mx-=half;
+  mq.style.transform='translateX('+mx+'px)';
+  $$('.ph svg').forEach(function(s){var r=s.parentNode.getBoundingClientRect();var k=(r.top+r.height/2-innerHeight/2)/innerHeight;s.style.transform='translateY('+(k*-10)+'%) scale(1.3)'});
+ }
+ requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.05});
+$$('.rv').forEach(function(e,i){e.style.transitionDelay=(i%3)*90+'ms';io.observe(e)});
+var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);var n=+e.target.dataset.n,t0=performance.now();
+ (function s(t){var k=Math.min(1,(t-t0)/1400);e.target.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(s)})(t0)})},{threshold:.6});
+$$('[data-n]').forEach(function(e){co.observe(e)});
+var f=$('#f'),wa=$('#wa');
+function upd(){var m='Hi! I want to book '+$('#gm').value+' on '+$('#dt').value+' at '+$('#tm').value+'. Name: '+$('#nm').value;
+ wa.href='https://wa.me/91XXXXXXXXXX?text='+encodeURIComponent(m)}
+f.addEventListener('input',upd);f.addEventListener('change',upd);upd();
+})();
+</script>
+</body>
+</html>
